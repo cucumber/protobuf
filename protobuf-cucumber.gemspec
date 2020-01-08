@@ -3,7 +3,7 @@ $LOAD_PATH.push ::File.expand_path("../lib", __FILE__)
 require "protobuf/version"
 
 ::Gem::Specification.new do |s|
-  s.name          = 'protobuf'
+  s.name          = 'protobuf-cucumber'
   s.version       = ::Protobuf::VERSION
   s.date          = ::Time.now.strftime('%Y-%m-%d')
   s.license       = 'MIT'
