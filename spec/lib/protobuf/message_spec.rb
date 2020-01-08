@@ -429,7 +429,7 @@ RSpec.describe Protobuf::Message do
     specify { expect(subject.to_json).to eq '{"name":"Test Name","active":false}' }
 
     context 'for byte fields' do
-      let(:bytes) { "\x06\x8D1HP\x17:b" }
+      let(:bytes) { "\x06\x8D1HP\x17:b".force_encoding(Encoding::ASCII_8BIT) }
 
       subject do
         ::Test::ResourceFindRequest.new(:widget_bytes => [bytes])
@@ -439,7 +439,7 @@ RSpec.describe Protobuf::Message do
     end
 
     context 'using lower camel case field names' do
-      let(:bytes) { "\x06\x8D1HP\x17:b" }
+      let(:bytes) { "\x06\x8D1HP\x17:b".force_encoding(Encoding::ASCII_8BIT) }
 
       subject do
         ::Test::ResourceFindRequest.new(:widget_bytes => [bytes])
@@ -453,17 +453,17 @@ RSpec.describe Protobuf::Message do
     it 'decodes optional bytes field with base64' do
       expected_single_bytes = "\x06\x8D1HP\x17:b".unpack('C*')
       single_bytes = ::Test::ResourceFindRequest
-        .from_json('{"singleBytes":"Bo0xSFAXOmI="}')
-        .single_bytes.unpack('C*')
+                     .from_json('{"singleBytes":"Bo0xSFAXOmI="}')
+                     .single_bytes.unpack('C*')
 
       expect(single_bytes).to(eq(expected_single_bytes))
     end
 
     it 'decodes repeated bytes field with base64' do
-      expected_widget_bytes = ["\x06\x8D1HP\x17:b"].map {|s| s.unpack('C*')}
+      expected_widget_bytes = ["\x06\x8D1HP\x17:b"].map { |s| s.unpack('C*') }
       widget_bytes = ::Test::ResourceFindRequest
-        .from_json('{"widgetBytes":["Bo0xSFAXOmI="]}')
-        .widget_bytes.map {|s| s.unpack('C*')}
+                     .from_json('{"widgetBytes":["Bo0xSFAXOmI="]}')
+                     .widget_bytes.map { |s| s.unpack('C*') }
 
       expect(widget_bytes).to(eq(expected_widget_bytes))
     end

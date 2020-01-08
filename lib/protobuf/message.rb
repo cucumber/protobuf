@@ -23,15 +23,15 @@ module Protobuf
 
     def self.from_json(json)
       fields = normalize_json(JSON.parse(json))
-      self.new(fields)
+      new(fields)
     end
 
     def self.normalize_json(ob)
       case ob
       when Array
-        ob.map {|value| normalize_json(value) }
+        ob.map { |value| normalize_json(value) }
       when Hash
-        Hash[*ob.flat_map {|key, value| [key.underscore, normalize_json(value)] }]
+        Hash[*ob.flat_map { |key, value| [key.underscore, normalize_json(value)] }]
       else
         ob
       end
@@ -166,7 +166,7 @@ module Protobuf
 
         # NB: to_json_hash_value should come before json_encode so as to handle
         # repeated fields without extra logic.
-        hashed_value = if value.respond_to?(:to_json_hash_value)
+        hashed_value = if value.respond_to?(:to_json_hash_value) && !field.is_a?(::Protobuf::Field::EnumField)
                          value.to_json_hash_value(options)
                        elsif field.respond_to?(:json_encode)
                          field.json_encode(value)
