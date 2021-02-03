@@ -4,8 +4,12 @@ require 'protobuf/logging'
 require 'protobuf/rpc/servers/socket_runner'
 require 'protobuf/rpc/servers/zmq_runner'
 require 'protobuf/refinements/hash/symbolize_keys'
+require 'protobuf/refinements/string/classify'
+require 'protobuf/refinements/string/constantize'
 
 using Protobuf::Refinements::Hash::SymbolizeKeys
+using Protobuf::Refinements::String::Classify
+using Protobuf::Refinements::String::Constantize
 
 module Protobuf
   class CLI < ::Thor

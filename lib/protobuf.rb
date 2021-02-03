@@ -6,6 +6,13 @@ require 'stringio'
 
 require 'active_support/json'
 require 'active_support/notifications'
+
+require 'protobuf/refinements/string/classify'
+require 'protobuf/refinements/string/constantize'
+
+using Protobuf::Refinements::String::Classify
+using Protobuf::Refinements::String::Constantize
+
 # Under MRI, this optimizes proto decoding by around 15% in tests.
 # When unavailable, we fall to pure Ruby.
 # rubocop:disable Lint/HandleExceptions

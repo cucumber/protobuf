@@ -1,3 +1,9 @@
+require 'protobuf/refinements/string/constantize'
+require 'protobuf/refinements/string/underscore'
+
+using Protobuf::Refinements::String::Constantize
+using Protobuf::Refinements::String::Underscore
+
 module Protobuf
   module Rpc
     module Middleware

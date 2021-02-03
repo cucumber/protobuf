@@ -1,6 +1,11 @@
 require 'protobuf/message/fields'
 require 'protobuf/message/serialization'
 require 'protobuf/varint'
+require 'protobuf/refinements/string/camelize'
+require 'protobuf/refinements/string/underscore'
+
+using Protobuf::Refinements::String::Camelize
+using Protobuf::Refinements::String::Underscore
 
 module Protobuf
   class Message
