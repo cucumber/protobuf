@@ -244,14 +244,14 @@ module Protobuf
       def start_server
         debug_say('Running server')
 
-        ::ActiveSupport::Notifications.instrument("before_server_bind")
+        ::ActiveSupport::Notifications.instrument("before_server_bind") if Object.const_defined?('::ActiveSupport::Notifications')
 
         runner.run do
           logger.info do
             "pid #{::Process.pid} -- #{mode} RPC Server listening at #{options.host}:#{options.port}"
           end
 
-          ::ActiveSupport::Notifications.instrument("after_server_bind")
+          ::ActiveSupport::Notifications.instrument("after_server_bind") if Object.const_defined?('::ActiveSupport::Notifications')
         end
 
         logger.info { 'Shutdown complete' }

@@ -257,6 +257,7 @@ module Protobuf
       end
 
       def trigger(action, listing)
+        return unless Object.const_defined?('::ActiveSupport::Notifications')
         ::ActiveSupport::Notifications.instrument("directory.listing.#{action}", :listing => listing)
       end
     end

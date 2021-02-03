@@ -1,7 +1,20 @@
-require 'active_support/deprecation'
+begin
+  require 'active_support/deprecation'
+rescue LoadError
+end
 
 module Protobuf
-  if ::ActiveSupport::Deprecation.is_a?(Class)
+  if !Object.const_defined?('::ActiveSupport::Deprecation')
+    class NullDeprecator
+      def initialize(*); end
+      def define_deprecated_methods(*); end
+      def deprecate_methods(*); end
+      attr_accessor :silenced, :behavior
+    end
+
+    Deprecation = NullDeprecator.clone
+    FieldDeprecation = NullDeprecator.clone
+  elsif ::ActiveSupport::Deprecation.is_a?(Class)
     class DeprecationBase < ::ActiveSupport::Deprecation
       def deprecate_methods(*args)
         deprecation_options = { :deprecator => self }

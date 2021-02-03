@@ -21,5 +21,5 @@ module Protobuf
   Rpc.middleware.use(Rpc::Middleware::Logger)
   Rpc.middleware.use(Rpc::Middleware::ResponseEncoder)
 
-  ActiveSupport.run_load_hooks(:protobuf_rpc_middleware, Rpc)
+  ActiveSupport.run_load_hooks(:protobuf_rpc_middleware, Rpc) if Object.const_defined?('::ActiveSupport::LazyLoadHooks')
 end
