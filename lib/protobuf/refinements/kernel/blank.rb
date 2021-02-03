@@ -57,9 +57,11 @@ module Protobuf
           end
         end
 
-        refine ::Delegator do
-          def present?
-            __getobj__.present?
+        if Object.const_defined?('::Delegator')
+          refine ::Delegator do
+            def present?
+              __getobj__.present?
+            end
           end
         end
       end

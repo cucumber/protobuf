@@ -36,8 +36,10 @@ module Protobuf
           include Tryable
         end
 
-        refine ::Delegator do
-          include Tryable
+        if Object.const_defined?('::Delegator')
+          refine ::Delegator do
+            include Tryable
+          end
         end
 
         refine ::NilClass do
