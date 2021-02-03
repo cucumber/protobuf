@@ -5,6 +5,7 @@ require 'socket'
 require 'stringio'
 
 require 'active_support/json'
+require 'active_support/lazy_load_hooks'
 require 'active_support/notifications'
 
 require 'protobuf/refinements/string/classify'
