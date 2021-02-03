@@ -1,10 +1,11 @@
-require 'active_support/core_ext/hash/keys'
-
 require 'thor'
 require 'protobuf/version'
 require 'protobuf/logging'
 require 'protobuf/rpc/servers/socket_runner'
 require 'protobuf/rpc/servers/zmq_runner'
+require 'protobuf/refinements/hash/symbolize_keys'
+
+using Protobuf::Refinements::Hash::SymbolizeKeys
 
 module Protobuf
   class CLI < ::Thor

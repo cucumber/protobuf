@@ -1,7 +1,9 @@
 require 'ostruct'
 require 'thread'
+require 'protobuf/refinements/hash/symbolize_keys'
 require 'protobuf/refinements/object/try'
 
+using Protobuf::Refinements::Hash::SymbolizeKeys
 using Protobuf::Refinements::Object::Try
 
 module Protobuf
