@@ -1,6 +1,9 @@
+require 'protobuf/refinements/object/try'
 require 'protobuf/rpc/server'
 require 'protobuf/rpc/servers/zmq/util'
 require 'thread'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Rpc

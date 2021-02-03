@@ -4,6 +4,9 @@ require 'protobuf/generators/field_generator'
 require 'protobuf/generators/message_generator'
 require 'protobuf/generators/option_generator'
 require 'protobuf/generators/service_generator'
+require 'protobuf/refinements/object/try'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Generators

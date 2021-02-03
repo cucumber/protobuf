@@ -4,7 +4,6 @@ require 'pp'
 require 'socket'
 require 'stringio'
 
-require 'active_support/core_ext/object/try'
 require 'active_support/json'
 require 'active_support/notifications'
 # Under MRI, this optimizes proto decoding by around 15% in tests.

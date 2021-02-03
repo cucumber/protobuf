@@ -1,5 +1,9 @@
 require 'delegate'
 
+require 'protobuf/refinements/object/try'
+
+using Protobuf::Refinements::Object::Try
+
 ##
 # Adding extension to Numeric until
 # we can get people to stop calling #value

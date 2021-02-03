@@ -1,5 +1,8 @@
 require 'ostruct'
 require 'thread'
+require 'protobuf/refinements/object/try'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Rpc

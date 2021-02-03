@@ -1,7 +1,10 @@
 require 'date'
 require 'time'
 require 'protobuf/logging'
+require 'protobuf/refinements/object/try'
 require 'protobuf/rpc/rpc.pb'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Rpc

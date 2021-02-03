@@ -5,7 +5,10 @@ require 'set'
 require 'thread'
 require 'timeout'
 
+require 'protobuf/refinements/object/try'
 require 'protobuf/rpc/dynamic_discovery.pb'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Rpc
