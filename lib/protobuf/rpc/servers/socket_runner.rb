@@ -1,3 +1,7 @@
+require 'protobuf/refinements/hash/symbolize_keys'
+
+using Protobuf::Refinements::Hash::SymbolizeKeys
+
 module Protobuf
   module Rpc
     class SocketRunner

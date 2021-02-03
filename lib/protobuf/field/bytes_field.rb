@@ -70,7 +70,7 @@ module Protobuf
         end
       end
 
-      def json_encode(value, options={})
+      def json_encode(value, _options = {})
         Base64.strict_encode64(value)
       end
     end

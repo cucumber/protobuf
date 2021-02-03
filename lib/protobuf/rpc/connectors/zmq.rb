@@ -2,6 +2,9 @@ require "thread_safe"
 require "protobuf/rpc/connectors/base"
 require "protobuf/rpc/connectors/ping"
 require "protobuf/rpc/service_directory"
+require 'protobuf/refinements/object/try'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Rpc

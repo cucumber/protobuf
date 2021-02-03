@@ -1,4 +1,3 @@
-require 'active_support/core_ext/module/aliasing'
 require 'protobuf/generators/file_generator'
 
 module Protobuf

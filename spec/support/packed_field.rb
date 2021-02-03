@@ -1,3 +1,7 @@
+require 'protobuf/refinements/string/underscore'
+
+using Protobuf::Refinements::String::Underscore
+
 if defined?(RSpec)
   shared_examples_for :packable_field do |field_klass|
 

@@ -1,9 +1,12 @@
+require 'protobuf/refinements/object/try'
 require 'protobuf/rpc/servers/zmq/util'
 require 'protobuf/rpc/servers/zmq/worker'
 require 'protobuf/rpc/servers/zmq/broker'
 require 'protobuf/rpc/dynamic_discovery.pb'
 require 'securerandom'
 require 'thread'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Rpc

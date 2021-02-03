@@ -5,7 +5,10 @@ require 'set'
 require 'thread'
 require 'timeout'
 
+require 'protobuf/refinements/object/try'
 require 'protobuf/rpc/dynamic_discovery.pb'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Rpc
@@ -254,6 +257,7 @@ module Protobuf
       end
 
       def trigger(action, listing)
+        return unless Object.const_defined?('::ActiveSupport::Notifications')
         ::ActiveSupport::Notifications.instrument("directory.listing.#{action}", :listing => listing)
       end
     end

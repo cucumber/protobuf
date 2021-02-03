@@ -1,6 +1,10 @@
 require 'spec_helper'
 require PROTOS_PATH.join('enum.pb')
 
+require 'protobuf/refinements/object/try'
+
+using Protobuf::Refinements::Object::Try
+
 RSpec.describe Protobuf::Enum do
 
   describe 'class dsl' do

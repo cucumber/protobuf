@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+require 'active_support/notifications'
 require 'protobuf/rpc/service_directory'
 
 RSpec.describe ::Protobuf::Rpc::ServiceDirectory do

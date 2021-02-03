@@ -1,14 +1,27 @@
 require 'base64'
+require 'json'
 require 'logger'
 require 'pp'
 require 'socket'
 require 'stringio'
 
-require 'active_support/core_ext/object/blank'
-require 'active_support/core_ext/object/try'
-require 'active_support/inflector'
-require 'active_support/json'
-require 'active_support/notifications'
+# rubocop:disable Lint/HandleExceptions
+begin
+  require 'active_support/lazy_load_hooks'
+rescue LoadError
+end
+begin
+  require 'active_support/notifications'
+rescue LoadError
+end
+# rubocop:enable Lint/HandleExceptions
+
+require 'protobuf/refinements/string/classify'
+require 'protobuf/refinements/string/constantize'
+
+using Protobuf::Refinements::String::Classify
+using Protobuf::Refinements::String::Constantize
+
 # Under MRI, this optimizes proto decoding by around 15% in tests.
 # When unavailable, we fall to pure Ruby.
 # rubocop:disable Lint/HandleExceptions
@@ -55,15 +68,31 @@ module Protobuf
   end
 
   def self.after_server_bind(&block)
+    unless Object.const_defined?('::ActiveSupport::Notifications')
+      warn_no_active_support_notifications('after_server_bind')
+      return
+    end
+
     ::ActiveSupport::Notifications.subscribe('after_server_bind') do |*args|
       block.call(*args)
     end
   end
 
   def self.before_server_bind(&block)
+    unless Object.const_defined?('::ActiveSupport::Notifications')
+      warn_no_active_support_notifications('before_server_bind')
+      return
+    end
+
     ::ActiveSupport::Notifications.subscribe('before_server_bind') do |*args|
       block.call(*args)
     end
+  end
+
+  def self.warn_no_active_support_notifications(method)
+    return if ENV['PROTOBUF_SUPPRESS_NO_ACTIVE_SUPPORT_NOTIFICATIONS_WARNING'] == '1'
+
+    STDERR.puts("[WARN] ActiveSupport::Notifications is not loaded. To use `Protobuf.#{method}`, you need to require 'active_support/notifications'")
   end
 
   def self.client_host

@@ -1,4 +1,7 @@
 require 'protobuf/generators/base'
+require 'protobuf/refinements/object/try'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Generators

@@ -1,6 +1,9 @@
 require 'set'
 require 'protobuf/generators/base'
 require 'protobuf/generators/group_generator'
+require 'protobuf/refinements/string/constantize'
+
+using Protobuf::Refinements::String::Constantize
 
 module Protobuf
   module Generators

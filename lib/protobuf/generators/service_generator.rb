@@ -1,5 +1,8 @@
 require 'protobuf/generators/base'
 require 'protobuf/generators/option_generator'
+require 'protobuf/refinements/string/underscore'
+
+using Protobuf::Refinements::String::Underscore
 
 module Protobuf
   module Generators

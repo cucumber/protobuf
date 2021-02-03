@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'active_support/notifications'
 require 'protobuf/cli'
 
 RSpec.describe ::Protobuf::CLI do

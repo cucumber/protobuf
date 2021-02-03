@@ -1,5 +1,8 @@
 require 'protobuf/generators/base'
 require 'protobuf/generators/option_generator'
+require 'protobuf/refinements/object/try'
+
+using Protobuf::Refinements::Object::Try
 
 module Protobuf
   module Generators

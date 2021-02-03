@@ -1,11 +1,15 @@
-require 'active_support/core_ext/hash/keys'
-require 'active_support/inflector'
-
 require 'thor'
 require 'protobuf/version'
 require 'protobuf/logging'
 require 'protobuf/rpc/servers/socket_runner'
 require 'protobuf/rpc/servers/zmq_runner'
+require 'protobuf/refinements/hash/symbolize_keys'
+require 'protobuf/refinements/string/classify'
+require 'protobuf/refinements/string/constantize'
+
+using Protobuf::Refinements::Hash::SymbolizeKeys
+using Protobuf::Refinements::String::Classify
+using Protobuf::Refinements::String::Constantize
 
 module Protobuf
   class CLI < ::Thor
@@ -240,14 +244,14 @@ module Protobuf
       def start_server
         debug_say('Running server')
 
-        ::ActiveSupport::Notifications.instrument("before_server_bind")
+        ::ActiveSupport::Notifications.instrument("before_server_bind") if Object.const_defined?('::ActiveSupport::Notifications')
 
         runner.run do
           logger.info do
             "pid #{::Process.pid} -- #{mode} RPC Server listening at #{options.host}:#{options.port}"
           end
 
-          ::ActiveSupport::Notifications.instrument("after_server_bind")
+          ::ActiveSupport::Notifications.instrument("after_server_bind") if Object.const_defined?('::ActiveSupport::Notifications')
         end
 
         logger.info { 'Shutdown complete' }

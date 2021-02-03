@@ -135,6 +135,6 @@ module Protobuf
 
     end
 
-    ActiveSupport.run_load_hooks(:protobuf_rpc_client, Client)
+    ActiveSupport.run_load_hooks(:protobuf_rpc_client, Client) if Object.const_defined?('::ActiveSupport::LazyLoadHooks')
   end
 end

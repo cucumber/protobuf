@@ -1,7 +1,5 @@
 require 'ostruct'
 
-require 'active_support/core_ext/hash/reverse_merge'
-
 require 'spec_helper'
 require 'protobuf/logging'
 require 'protobuf/rpc/server'
@@ -25,13 +23,13 @@ class StubServer
 
   def initialize(options = {})
     self.options = OpenStruct.new(
-      options.reverse_merge(
+      {
         :host => '127.0.0.1',
         :port => 9399,
         :worker_port => 9400,
         :delay => 0,
         :server => Protobuf::Rpc::Socket::Server,
-      ),
+      }.merge(options),
     )
 
     start
