@@ -1,10 +1,10 @@
 require 'base64'
+require 'json'
 require 'logger'
 require 'pp'
 require 'socket'
 require 'stringio'
 
-require 'active_support/json'
 require 'active_support/lazy_load_hooks'
 require 'active_support/notifications'
 
