@@ -1,8 +1,8 @@
 require "set"
-require 'protobuf/refinements/object/blank'
+require 'protobuf/refinements/kernel/blank'
 require 'protobuf/refinements/object/try'
 
-using Protobuf::Refinements::Object::Blank
+using Protobuf::Refinements::Kernel::Blank
 using Protobuf::Refinements::Object::Try
 
 module Protobuf

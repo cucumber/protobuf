@@ -1,6 +1,6 @@
-require 'protobuf/refinements/object/blank'
+require 'protobuf/refinements/kernel/blank'
 
-using Protobuf::Refinements::Object::Blank
+using Protobuf::Refinements::Kernel::Blank
 
 module Protobuf
   module Field
