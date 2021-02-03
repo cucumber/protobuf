@@ -1,7 +1,9 @@
-require 'active_support/core_ext/hash/slice'
 require 'protobuf/field/field_array'
 require 'protobuf/field/field_hash'
 require 'protobuf/field/base_field_object_definitions'
+require 'protobuf/refinements/hash/slice'
+
+using Protobuf::Refinements::Hash::Slice
 
 module Protobuf
   module Field
