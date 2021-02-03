@@ -26,7 +26,7 @@ module Protobuf
 
             rejected = keys - keep_keys
             removed = {}
-            rejected.each{ |k| removed[k] = delete(k) }
+            rejected.each { |k| removed[k] = delete(k) }
             removed
           end
         end

@@ -44,7 +44,7 @@ Style/GuardClause:
   MinBodyLength: 4
 
 Style/HashSyntax:
-  EnforcedStyle: hash_rockets
+  Enabled: False
 
 Style/IndentHash:
   EnforcedStyle: consistent
