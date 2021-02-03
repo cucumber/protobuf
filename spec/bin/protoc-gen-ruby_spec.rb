@@ -17,7 +17,7 @@ RSpec.describe 'protoc-gen-ruby' do
       pipe.close_write # needed so we can implicitly read until EOF
       response_bytes = pipe.read
       response = ::Google::Protobuf::Compiler::CodeGeneratorResponse.decode(response_bytes)
-      expect(response.file.first.content).to include("module #{package.titleize}")
+      expect(response.file.first.content).to include("module Test")
     end
   end
 end
