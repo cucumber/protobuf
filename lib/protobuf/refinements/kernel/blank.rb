@@ -56,6 +56,12 @@ module Protobuf
             false
           end
         end
+
+        refine ::Delegator do
+          def present?
+            __getobj__.present?
+          end
+        end
       end
     end
   end

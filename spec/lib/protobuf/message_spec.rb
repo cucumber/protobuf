@@ -5,6 +5,10 @@ require 'spec_helper'
 require PROTOS_PATH.join('resource.pb')
 require PROTOS_PATH.join('enum.pb')
 
+require 'protobuf/refinements/kernel/blank'
+
+using Protobuf::Refinements::Kernel::Blank
+
 RSpec.describe Protobuf::Message do
 
   describe '.decode' do
