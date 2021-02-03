@@ -6,7 +6,13 @@ module Protobuf
       module SymbolizeKeys
         refine ::Hash do
           def symbolize_keys
-            transform_keys { |key| key.to_sym rescue key }
+            transform_keys do |key|
+              begin
+                key.to_sym
+              rescue
+                key
+              end
+            end
           end
         end
       end

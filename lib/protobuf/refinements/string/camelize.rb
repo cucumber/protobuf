@@ -13,17 +13,17 @@ module Protobuf
 
             separators = ['_', '\s'] if separators.empty?
 
-            str = self.dup
+            str = dup
 
             separators.each do |s|
-              str = str.gsub(/(?:#{s}+)([a-z])/){ $1.upcase }
+              str = str.gsub(/(?:#{s}+)([a-z])/) { $1.upcase } # rubocop:disable Style/PerlBackrefs
             end
 
             case first_letter
             when :upper, true
-              str = str.gsub(/(\A|\s)([a-z])/){ $1 + $2.upcase }
+              str = str.gsub(/(\A|\s)([a-z])/) { $1 + $2.upcase } # rubocop:disable Style/PerlBackrefs
             when :lower, false
-              str = str.gsub(/(\A|\s)([A-Z])/){ $1 + $2.downcase }
+              str = str.gsub(/(\A|\s)([A-Z])/) { $1 + $2.downcase } # rubocop:disable Style/PerlBackrefs
             end
 
             str

@@ -43,11 +43,11 @@ module Protobuf
         end
 
         refine ::NilClass do
-          def try(method_name = nil, *args)
+          def try(_method_name = nil, *_args)
             nil
           end
 
-          def try!(method_name = nil, *args)
+          def try!(_method_name = nil, *_args)
             nil
           end
         end

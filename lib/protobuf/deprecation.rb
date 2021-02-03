@@ -1,6 +1,6 @@
 begin
   require 'active_support/deprecation'
-rescue LoadError
+rescue LoadError # rubocop:disable Lint/HandleExceptions
 end
 
 module Protobuf
