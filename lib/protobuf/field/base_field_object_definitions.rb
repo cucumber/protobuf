@@ -1,3 +1,7 @@
+require 'protobuf/refinements/object/blank'
+
+using Protobuf::Refinements::Object::Blank
+
 module Protobuf
   module Field
     module BaseFieldObjectDefinitions

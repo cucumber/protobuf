@@ -1,4 +1,7 @@
 require "set"
+require 'protobuf/refinements/object/blank'
+
+using Protobuf::Refinements::Object::Blank
 
 module Protobuf
   class Message
